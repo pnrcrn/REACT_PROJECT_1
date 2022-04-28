@@ -1,0 +1,16 @@
+.header{
+    background-color: rgb(233, 179, 108);
+    padding: 10px 10px ;
+
+
+    
+}
+.label{
+    font-style: italic;
+    font-size: larger;
+    color:teal;
+    font-weight:bolder;
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+
+}

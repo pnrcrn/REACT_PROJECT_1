@@ -2,9 +2,9 @@
 //hata aldığımızda ,yazım yanlışı yaptığımızda kolayca yakalamak için
 //onları kendi adlarında sabit değişkenlere atmak
 
- export const SIGN_IN='SIGN_IN';
- export const SIGN_OUT='SIGN_OUT';
- export const CREATE_STREAM='CREATE_STREAM';
+export const SIGN_IN='SIGN_IN';
+export const SIGN_OUT='SIGN_OUT';
+export const CREATE_STREAM='CREATE_STREAM';
 export const FETCH_STREAMS='FETCH_STREAMS';//kayıtların tümünü alan stream
 export const FETCH_STREAM='FETCH_STREAM';//tekil olan dışa aktarma
 export const DELETE_STREAM='DELETE_STREAM';
