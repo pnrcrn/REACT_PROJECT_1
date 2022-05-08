@@ -1,0 +1,29 @@
+
+.buttons{
+  margin-top: 18px;
+
+}
+.header{
+  background-color: rgb(242, 224, 201);
+}
+.formlist {
+  /* margin-left: auto;
+  margin-right: auto; */
+  /* width: 75em; */
+  margin-left: 2%;
+  margin-right: 35%;
+
+}
+.images{
+  width: 250px;
+  height: 150px;
+  padding: 10px;
+  margin-right: 10px;
+}
+.come-back{
+  text-align: center;  
+}
+.link{
+  margin-left: 2%;
+  margin-right: 35%;
+}

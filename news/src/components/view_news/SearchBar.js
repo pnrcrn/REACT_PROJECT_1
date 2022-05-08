@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import StreamShow from '../streams/StreamShow';
 import NewsList from './NewsList';
 import { newsApi } from '../../apis/news_api';
+import './newsitem.css';
 
 class SearchBar extends Component {
 
@@ -25,25 +26,18 @@ class SearchBar extends Component {
         console.log(response);
         this.setState({ news: response.data.articles });
     };
-
-    handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
-          console.log('do validate');
-        }};
-
+   
     render() {
         return (
-            <div className='search-bar ui segment'>
+            <div className='searchbar'>
                 <form className='ui form' 
-                onSubmit={this.onSearchSubmit} 
-                >
+                onSubmit={this.onSearchSubmit}>
                     <div className='field'>
-                        <label> Haber Ara</label>
+                        <label> HABER ARA</label>
                         <input
                             type='text'
                             value={this.state.term}
                             onChange={this.onInputChange}
-                           onKeyDown={this.handleKeyDown}
                         ></input>
                     </div>
                 </form>

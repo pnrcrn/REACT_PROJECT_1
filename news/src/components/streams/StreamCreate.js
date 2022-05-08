@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import StreamCreateInput from './StreamCreateInput';
 import db,{auth} from '../firebase/FirebaseConfig';
 import DateSelect from '../../datepicker/DateSelect';
-import PageNavigation from './PageNavigation';
-
+import {Link } from 'react-router-dom';
+import { validate } from '../errors/errors';
 
 
 const images = require('../../image/cat.jpg');
+
 
 function StreamCreate({user}){
 
   const [title, setTitle]=useState('');
   const [content, setContent]=useState('');
   const [url, setUrl]=useState('');
-  const[image,setImage]=useState(images);
+  const[image,setImage]=useState('');
+  const [date,setDate]=useState('');
 
   const addDatabase=(e)=>{
     e.preventDefault();
@@ -21,7 +23,7 @@ function StreamCreate({user}){
           newsTitle: title,
           newsContent:content,
           url:url,
-          date:'',
+          date:date,
           newsImage:image
         })
        };
@@ -30,8 +32,7 @@ function StreamCreate({user}){
     
       <div className='field'>
         <div className='ui form'>
-      <form className='form' >
-
+      <form validate={validate}>
         <br></br>
         <div className='field'>
 
@@ -78,7 +79,9 @@ function StreamCreate({user}){
             
             </StreamCreateInput>
             <label>Haber Tarihi</label>
-            <DateSelect></DateSelect>
+            <DateSelect
+            selectedDate={date}
+            onChange={e=>setDate(e)}></DateSelect>
           
             <br></br>
             <div>
@@ -86,14 +89,14 @@ function StreamCreate({user}){
           <button className="ui inverted orange button"
              onClick={addDatabase}>
              Kaydet</button>
-            
-          <div>
+             <Link to='/StreamDelete'>
               <button
-              onClick={PageNavigation}
               className='ui right inverted orange button'>
-              Koleksiyondan Sil
+              Koleksiyona Git
         </button>
-             
+        </Link>
+          <div>
+       
            </div>
         </div>
             

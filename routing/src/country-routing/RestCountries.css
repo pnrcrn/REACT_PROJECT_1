@@ -1,0 +1,17 @@
+
+.name{
+    font-size: larger;
+    font-weight: bold;
+    font-style: italic;
+    color: white;
+    background-color: burlywood;
+    width: 300px;
+
+}
+.capital{
+    font-size: small;
+}
+.image{
+    width:250px;
+    height: 200px;
+}

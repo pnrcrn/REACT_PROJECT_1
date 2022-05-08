@@ -3,7 +3,7 @@ import db from '../firebase/FirebaseConfig';
 import './streamCreate.css';
 
 
-const images = require('../../image/cat.jpeg');
+const images = require('../../image/news_3.png');
 const StreamShow = () => {
 
     const [news, setNews] = useState([]);
@@ -29,8 +29,8 @@ const StreamShow = () => {
         <div>
             {news.map(({ id, data: { newsTitle, newsContent, url, date, newsImage } }) =>
             (
-                <div className='ui celled list' key={id}>
-                    <div className='item'>
+                <div className='form' key={id}>
+                    <div className='item'> 
                         <button
                             onClick={(e) => { buttonOnClick(url) }}
                             className="tiny ui right floated teal button">
@@ -39,9 +39,7 @@ const StreamShow = () => {
                             className="header" >{newsTitle}</div>
                         <br></br>
                         {newsContent}
-                        <label className=' ui label' >
-                            <a className='detail'>{date}</a>
-                        </label>
+                        <br></br>
                     </div>
                     <br></br>
                 </div>

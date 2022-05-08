@@ -1,4 +1,5 @@
 import React from 'react';
+import './newsitem.css';
 
 const NewsItem = ({ newshow }) => {
 
@@ -8,19 +9,17 @@ const NewsItem = ({ newshow }) => {
   }
   return (
 
-    <div className="ui celled list">
+    <div className="form">
       <div className="item">
-        <div className="floated content" />
+        <div className="container" />
         <button 
         onClick={(e)=>{buttonOnClick(newshow)}}
         className="tiny ui right floated teal button">
           Git</button>
         <img className="ui large aligned tiny image" src={newshow.urlToImage} />
-        <div className="header">{newshow.title}</div>
+       <div className='distance'></div>
+        <div className="baslik">{newshow.title}</div>
         {newshow.description}
-        {/* <label className=' ui label' >
-          <a className='detail'>{newshow.publishedAt}</a>
-        </label>*/}
       </div>
       <br></br>
     </div>

@@ -15,21 +15,22 @@ class Deneme extends Component {
                 q: term,
             }
         });
+        console.log(this.state.news);
         console.log(response);
         this.setState({ news: response.data.articles });
     };
 
-    
-
     render() {
         return (
             <div>
+                {this.renderList}
                 <Header></Header>
                 <SearchBar 
                 onSearchSubmit={this.onTermSubmit}
                  />
-                <StreamShow></StreamShow>
-                <NewsList news={this.state.news}></NewsList>
+                {this.state.news.length===0?<StreamShow></StreamShow>
+                :<NewsList news={this.state.news}></NewsList>
+                 }
             </div>
         )
     }

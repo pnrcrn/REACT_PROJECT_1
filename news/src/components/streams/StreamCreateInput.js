@@ -1,16 +1,23 @@
 import React from 'react';
-import './streamCreate.css';
 
-function StreamCreateInput({ label, placeholder, onChange, value }) {
+
+
+
+function StreamCreateInput({ label, placeholder, onChange, value ,validate}) {
     return (
-        <div className='field'>
-            <label>{label}</label>
+        <div 
+        className='field'>
+            <label >{label}</label>
             <input
+                className='input'
+                placeholder={placeholder}
                 value={value}
                 onChange={onChange}
                 type='text'
-                placeholder={placeholder}>
+                validate={validate}
+               >
             </input>
+            
             {/* {meta.touched && meta.error && <div>{meta.error}</div>} */}
         </div>
     )

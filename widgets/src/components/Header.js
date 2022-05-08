@@ -6,7 +6,7 @@
              <Link href="/" className="item">
                  Accordion
              </Link>
-             < href="/list" className="item">
+             <Link href="/list" className="item">
                  Search
              </Link>
              <Link href="/dropdown" className="item">

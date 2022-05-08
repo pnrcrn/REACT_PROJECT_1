@@ -2,8 +2,7 @@ import React,{useState} from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
  
- function DateSelect() {
-     const [selectedDate,setSelectedDate]=useState(null);
+ function DateSelect({selectedDate,setSelectedDate, onChange}) {
    return (
      <div className='dateSelect'>
          <DatePicker
