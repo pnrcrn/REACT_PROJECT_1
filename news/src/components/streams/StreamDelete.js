@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import db from '../firebase/FirebaseConfig';
 import { Link, useNavigate } from 'react-router-dom';
-import './streamDelete.css'
+import './streamDelete.css';
+
 
 const StreamDelete = () => {
 
@@ -26,25 +27,31 @@ const StreamDelete = () => {
         });
     }, []);
 
+
     return (
 
         <div  >
-            {news.map(({ id, data: { newsTitle, newsContent, url, date, newsImage } }) =>
+            {news.map(({ id, data: { newsTitle, newsContent, url, date, newsImage, screencontent,createdUser,updateUser ,updateDate} }) =>
             (
 
                 <div className='formlist' key={id}>
                     <div className='floated content'>
-                        <div className='item'>
-                            <img
-                                className='images'
-                                src={newsImage}
-                                align='left'></img>
-                            <div className="header">{newsTitle}</div>
-                            {newsContent}
+                        <div>
+                            <div className='item'>
+                                <p>HABERİ OLUŞTURAN= {createdUser}</p>
+                                <p>HABERİ GÜNCELLEYEN=  {updateUser}</p>
+                                <p>HABER YAYIN TARİHİ= {date} </p>
+                                <p>HABER GÜNCELLEME TARİHİ= {updateDate}</p>
+                                <img
+                                    className='images'
+                                    src={newsImage}
+                                    align='left'></img>
+                                <div className="header">{newsTitle}</div>
+                                {newsContent}
+                            </div>
                         </div>
                         <div className='buttons'>
                             <button
-
                                 onClick={() => Delete(id)}
                                 className='ui inverted red button'>Sil</button>
                             <Link to='/StreamUpdate' state={{
@@ -53,10 +60,25 @@ const StreamDelete = () => {
                                 url: url,
                                 date: date,
                                 image: newsImage,
-                                content: newsContent
+                                content: newsContent,
+                                screen:screencontent
                             }} >
                                 <button
                                     className='ui inverted purple button'>Güncelle</button>
+                            </Link>
+                            <Link to='/StreamScreen' state={{
+                                id: id,
+                                title: newsTitle,            
+                            }} >
+                                <button
+                                    className='ui inverted green button'>Haber Sayfası Ekle</button>
+                            </Link>
+                            <Link to='/Details' state={{
+                                id: id,
+                                title: newsTitle,            
+                            }} >
+                                <button
+                                    className='ui inverted pink button'>Detaylar</button>
                             </Link>
                         </div>
                         {/* <button> <a onClick={()=>{toComponentB(id)}}>Navigasyon ile güncelleme</a></button> */}

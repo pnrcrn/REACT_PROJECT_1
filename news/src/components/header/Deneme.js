@@ -23,7 +23,7 @@ class Deneme extends Component {
     render() {
         return (
             <div>
-                {this.renderList}
+                {/* {this.renderList} */}
                 <Header></Header>
                 <SearchBar 
                 onSearchSubmit={this.onTermSubmit}

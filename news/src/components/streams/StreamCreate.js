@@ -3,19 +3,22 @@ import StreamCreateInput from './StreamCreateInput';
 import db,{auth} from '../firebase/FirebaseConfig';
 import DateSelect from '../../datepicker/DateSelect';
 import {Link } from 'react-router-dom';
-import { validate } from '../errors/errors';
+import {DateTime} from './DateTime'
 
 
 const images = require('../../image/cat.jpg');
-
+const firebaseImages = require('../../image/news_3.png');
 
 function StreamCreate({user}){
 
+  
+ 
   const [title, setTitle]=useState('');
   const [content, setContent]=useState('');
   const [url, setUrl]=useState('');
   const[image,setImage]=useState('');
-  const [date,setDate]=useState('');
+  const createdUserData=user.displayName;
+
 
   const addDatabase=(e)=>{
     e.preventDefault();
@@ -23,8 +26,12 @@ function StreamCreate({user}){
           newsTitle: title,
           newsContent:content,
           url:url,
-          date:date,
-          newsImage:image
+          date:DateTime(),
+          newsImage:firebaseImages,
+          screencontent:'',
+          createdUser: createdUserData,
+          updateUser:'',
+          updateDate:''
         })
        };
      
@@ -32,10 +39,9 @@ function StreamCreate({user}){
     
       <div className='field'>
         <div className='ui form'>
-      <form validate={validate}>
+      <form >
         <br></br>
         <div className='field'>
-
           <button 
             className='tiny ui right floated  teal button'
             onClick={()=>auth.signOut()}
@@ -48,7 +54,6 @@ function StreamCreate({user}){
       <div className='field'>
            <label>Haber Görseli</label>
              <img  value={image} 
-             className="i fluid image"
              onChange={(e)=>setImage(e.target.value)}
              src={images }
               // src={setImage}
@@ -78,10 +83,6 @@ function StreamCreate({user}){
             onChange={(e)=>setUrl(e.target.value)}>
             
             </StreamCreateInput>
-            <label>Haber Tarihi</label>
-            <DateSelect
-            selectedDate={date}
-            onChange={e=>setDate(e)}></DateSelect>
           
             <br></br>
             <div>
@@ -89,7 +90,9 @@ function StreamCreate({user}){
           <button className="ui inverted orange button"
              onClick={addDatabase}>
              Kaydet</button>
-             <Link to='/StreamDelete'>
+             <Link 
+            
+             to='/StreamDelete'>
               <button
               className='ui right inverted orange button'>
               Koleksiyona Git

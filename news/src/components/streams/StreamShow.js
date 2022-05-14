@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import db from '../firebase/FirebaseConfig';
 import './streamCreate.css';
 
@@ -15,26 +16,37 @@ const StreamShow = () => {
                 data: doc.data()
             })
             ))
-        })
-    })
+        });
+    });
 
-
-    const buttonOnClick = () => {
-        var win = window.open(news.url, '_blank');// blank yerine '_self' kullanınca kendi sekmesinde açıyor
-        win.focus();
-    }
 
     return (
 
         <div>
-            {news.map(({ id, data: { newsTitle, newsContent, url, date, newsImage } }) =>
+            {news.map(({ id, data: { newsTitle, newsContent, url,date, newsImage,screencontent,updateDate } }) =>
             (
                 <div className='form' key={id}>
-                    <div className='item'> 
-                        <button
-                            onClick={(e) => { buttonOnClick(url) }}
-                            className="tiny ui right floated teal button">
-                            Git</button><img className="ui large aligned tiny image" src={`${newsImage === '' ? images : newsImage}`} />
+                    <div className='item'>
+                        <Link to='/GoButton' state={
+                            {
+                                id: id,
+                                title: newsTitle,
+                                content: newsContent,
+                                url: url,
+                                date: date,
+                                image: newsImage,
+                                screen:screencontent,
+                                updateDate:updateDate,
+                                creratedDate:date
+
+                            }
+                        }>
+                            <button
+                                className="tiny ui right floated teal button">
+                                Git</button>
+                        </Link>
+                        <img className="ui large aligned tiny image" src={`${newsImage === '' ? images : newsImage}`} />
+                        <div className='distance'></div>
                         <div
                             className="header" >{newsTitle}</div>
                         <br></br>

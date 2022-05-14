@@ -6,7 +6,7 @@ const NewsList = ({ news }) => {
     const renderedList = news.map(newshow => {
         return <NewsItem
              key={newshow.title}
-            newshow={newshow}>
+             newshow={newshow}>
         </NewsItem>
     })
     return (

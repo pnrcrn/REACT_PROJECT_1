@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import StreamShow from '../streams/StreamShow';
-import NewsList from './NewsList';
 import { newsApi } from '../../apis/news_api';
 import './newsitem.css';
 

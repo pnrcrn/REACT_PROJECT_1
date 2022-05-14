@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { auth } from '../firebase/FirebaseConfig';
 import Deneme from '../header/Deneme';
 import StreamCreate from '../streams/StreamCreate';
-
+import { userData } from '../App';
 
 
 function UserPage() {
@@ -10,9 +10,12 @@ function UserPage() {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        auth.onAuthStateChanged((authUser) => {
+       var response=auth.onAuthStateChanged((authUser) => {
             if (authUser) {
                 setUser(authUser);
+             
+                console.log(authUser._delegate.displayName)
+                // console.log(userData.displayName);
             }
             else {
                 setUser(null);

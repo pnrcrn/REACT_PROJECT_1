@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import StreamCreateInput from './StreamCreateInput';
 import DateSelect from '../../datepicker/DateSelect';
-import db from '../firebase/FirebaseConfig';
-import { useLocation, Link} from 'react-router-dom';
+import db, { auth } from '../firebase/FirebaseConfig';
+import { useLocation, Link } from 'react-router-dom';
 import './streamUpdate.css';
+import { DateTime } from './DateTime';
+import { userData } from '../App';
+
+
+
+
 
 const images = require('../../image/news_3.png');
 const interfaceImage = require('../../image/world.jpg');
@@ -15,16 +21,18 @@ const StreamUpdate = ({ docid }) => {
     const [content, setContent] = useState('');
     const [url, setUrl] = useState('');
     const [image, setImage] = useState(images);
-    const [date, setDate] = useState('');
+
 
     const update = async () => {
-
+  
         await db.collection('news').doc(location.state.id).update({
             newsTitle: title,
             newsContent: content,
             url: url,
-            date: '',
-            newsImage: images
+
+            newsImage: images,
+            updateUser:auth.currentUser.displayName,
+            updateDate: DateTime()
         });
 
 
@@ -70,10 +78,10 @@ const StreamUpdate = ({ docid }) => {
                         onChange={(e) => setUrl(e.target.value)}>
 
                     </StreamCreateInput>
-                    <label>Haber Tarihi</label>
+                    {/* <label>Haber Tarihi</label>
                     <DateSelect
-                        setSelectedDate={setDate}
-                        selectedDate={date}></DateSelect>
+                        selectedDate={date}
+                        setSelectedDate={setDate}></DateSelect> */}
                     <br></br>
                     <button
                         onClick={(e) => {
